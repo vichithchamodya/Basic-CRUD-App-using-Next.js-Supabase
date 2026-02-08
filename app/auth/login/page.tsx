@@ -11,7 +11,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 const formSchema = yup.object().shape({
   email: yup
