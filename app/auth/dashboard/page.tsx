@@ -13,6 +13,8 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Swal from "sweetalert2";
 
+export const dynamic = 'force-dynamic';
+
 interface ProductType {
   id?: number;
   title: string;

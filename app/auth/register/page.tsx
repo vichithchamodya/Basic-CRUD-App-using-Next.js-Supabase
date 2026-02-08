@@ -10,6 +10,8 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { myAppHook } from "@/context/AppUtils";
 
+export const dynamic = 'force-dynamic';
+
 const formSchema = yup.object().shape({
   fullName: yup.string().required("Full name is required"),
   email: yup

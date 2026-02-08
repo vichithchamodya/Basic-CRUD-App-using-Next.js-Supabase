@@ -4,6 +4,8 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { myAppHook } from "@/context/AppUtils";
 
+export const dynamic = 'force-dynamic';
+
 export default function Profile() {
   const { userProfile } = myAppHook();
 
