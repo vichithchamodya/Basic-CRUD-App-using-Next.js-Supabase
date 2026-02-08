@@ -8,6 +8,11 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp"
+    ]
+  },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",
     "@supabase/supabase-js": "^2.49.1",
