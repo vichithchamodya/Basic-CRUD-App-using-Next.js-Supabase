@@ -26,7 +26,7 @@ export default function Login() {
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting, errors },
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(formSchema),
   });
@@ -36,10 +36,10 @@ export default function Login() {
       router.push("/auth/dashboard");
       return;
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, router]);
 
   const handleSocialOauth = async (provider: "google" | "github") => {
-    const { data, error } = await supabase.auth.signInWithOAuth({
+    const { error } = await supabase.auth.signInWithOAuth({
       provider,
       options: {
         redirectTo: `${window.location.origin}/auth/dashboard`,
@@ -51,7 +51,7 @@ export default function Login() {
     }
   };
 
-  const onSubmit = async (formdata: any) => {
+  const onSubmit = async (formdata: { email: string; password: string }) => {
     setIsLoading(true);
 
     const { email, password } = formdata;
@@ -189,7 +189,7 @@ export default function Login() {
             </div>
 
             <p className="text-center mt-6 text-gray-600">
-              Don't have an account?{" "}
+              Don&apos;t have an account?{" "}
               <button
                 type="button"
                 onClick={handleRegisterRedirect}

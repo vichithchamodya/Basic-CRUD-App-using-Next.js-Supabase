@@ -98,6 +98,7 @@ export default function Dashboard() {
       router.push("/auth/login");
       return;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Upload Banner Image
@@ -107,7 +108,7 @@ export default function Dashboard() {
     const fileExtension = file.name.split(".").pop();
     const fileName = `${Date.now()}.${fileExtension}`;
 
-    const { data, error } = await supabase.storage
+    const { error } = await supabase.storage
       .from("product-images")
       .upload(fileName, file);
 
@@ -121,6 +122,7 @@ export default function Dashboard() {
   };
 
   // Form Submit
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onFormSubmit = async (formData: any) => {
     setIsLoading(true);
 
@@ -133,7 +135,7 @@ export default function Dashboard() {
 
     if (editId) {
       // Edit Operation
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from("products")
         .update({
           ...formData,
@@ -151,7 +153,7 @@ export default function Dashboard() {
       }
     } else {
       // Add Operation
-      const { data, error } = await supabase.from("products").insert({
+      const { error } = await supabase.from("products").insert({
         ...formData,
         user_id: userId,
         banner_image: imagePath,
@@ -173,7 +175,7 @@ export default function Dashboard() {
   const fetchProductsFromTable = async (userId: string) => {
     setIsLoading(true);
 
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from("products")
       .select("*")
       .eq("user_id", userId);
@@ -209,7 +211,7 @@ export default function Dashboard() {
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const { data, error } = await supabase.from("products").delete().match({
+        const { error } = await supabase.from("products").delete().match({
           id: id,
           user_id: userId,
         });

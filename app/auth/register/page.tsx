@@ -38,16 +38,22 @@ export default function Register() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(formSchema),
   });
 
-  const onSubmit = async (formdata: any) => {
+  const onSubmit = async (formdata: {
+    fullName: string;
+    email: string;
+    password: string;
+    gender: string;
+    phone: string;
+  }) => {
     //console.log(formdata)
     setIsLoading(true);
     const { fullName, email, password, gender, phone } = formdata;
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email,
       password,
       options: {
