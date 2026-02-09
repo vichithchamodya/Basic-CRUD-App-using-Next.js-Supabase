@@ -82,22 +82,22 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen flex flex-col bg-gray-900">
       <Navbar />
 
       <div className="flex-1 flex items-center justify-center px-4 py-12">
         <div className="max-w-md w-full">
           <div className="card">
-            <h2 className="text-center text-3xl font-bold mb-2 text-gray-800">
-              Welcome Back
-            </h2>
-            <p className="text-center text-gray-600 mb-8">
-              Sign in to your account
-            </p>
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold mb-2 text-gray-100">
+                Welcome Back
+              </h2>
+              <p className="text-gray-400">Sign in to your account</p>
+            </div>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label className="block text-gray-300 font-semibold mb-2">
                   Email Address
                 </label>
                 <input
@@ -107,14 +107,14 @@ export default function Login() {
                   {...register("email")}
                 />
                 {errors.email?.message && (
-                  <p className="text-red-600 text-sm mt-1">
+                  <p className="text-red-400 text-sm mt-1">
                     {errors.email?.message}
                   </p>
                 )}
               </div>
 
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label className="block text-gray-300 font-semibold mb-2">
                   Password
                 </label>
                 <input
@@ -124,13 +124,13 @@ export default function Login() {
                   {...register("password")}
                 />
                 {errors.password?.message && (
-                  <p className="text-red-600 text-sm mt-1">
+                  <p className="text-red-400 text-sm mt-1">
                     {errors.password?.message}
                   </p>
                 )}
               </div>
 
-              <button type="submit" className="btn-primary w-full">
+              <button type="submit" className="btn-primary w-full py-3">
                 Sign In
               </button>
             </form>
@@ -138,10 +138,10 @@ export default function Login() {
             <div className="mt-6">
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-300"></div>
+                  <div className="w-full border-t border-gray-600"></div>
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-white text-gray-500">
+                  <span className="px-2 bg-gray-800 text-gray-400">
                     Or continue with
                   </span>
                 </div>
@@ -151,7 +151,7 @@ export default function Login() {
                 <button
                   type="button"
                   onClick={() => handleSocialOauth("google")}
-                  className="flex items-center justify-center px-4 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all duration-200 font-medium text-gray-700"
+                  className="flex items-center justify-center px-4 py-2.5 border border-gray-600 rounded-lg hover:bg-gray-700 transition-all duration-200 font-medium text-gray-100"
                 >
                   <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
                     <path
@@ -176,7 +176,7 @@ export default function Login() {
                 <button
                   type="button"
                   onClick={() => handleSocialOauth("github")}
-                  className="flex items-center justify-center px-4 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all duration-200 font-medium text-gray-700"
+                  className="flex items-center justify-center px-4 py-2.5 border border-gray-600 rounded-lg hover:bg-gray-700 transition-all duration-200 font-medium text-gray-100"
                 >
                   <svg
                     className="w-5 h-5 mr-2"
@@ -190,12 +190,12 @@ export default function Login() {
               </div>
             </div>
 
-            <p className="text-center mt-6 text-gray-600">
+            <p className="text-center mt-6 text-gray-400">
               Don&apos;t have an account?{" "}
               <button
                 type="button"
                 onClick={handleRegisterRedirect}
-                className="text-blue-600 hover:text-blue-700 font-semibold hover:underline"
+                className="text-blue-400 hover:text-blue-300 font-semibold hover:underline"
               >
                 Create account
               </button>
